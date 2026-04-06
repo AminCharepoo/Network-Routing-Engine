@@ -1,0 +1,14 @@
+- Why does RoutingEngine use unique_ptr<Node>? (sole ownership)
+Only RoutineEngine can own it (sole ownership) so no other object can accidentally own it. It also handles deleting so you don't have to manually delete them. 
+
+- Why are edges stored by value in vector<Edge>? (small, copyable)
+Each edge is simple and has a small amount of byte since it is only an int and a double. This makes it easy to copy and no memory management needed since it isn't being dynamically allocated. 
+
+- Why is visited on the stack? (short-lived, small)
+Stack is fast and the data stored in visited doesn't last for long. Using new to allocate memory would be complicated and unnecessary. Also, visited only needs to live in the scope of findPath(). 
+
+- Where would shared_ptr be useful? (shared adjacency, multi-path search)
+A shared_ptr would be helpful if there was multiple path searches. You would want shared_ptr so that multiple search engines can reference the same Node and it will automatically get deleted once all of them release it. 
+
+- What would break if you used raw new without cleanup?
+There would be memory leaks if you used raw without cleanup. The memory is never rreturned so with a longer running program it causes a lot of damage. Also, there are more opporutnites for more bugs and breaks to happen like double-deleting. 

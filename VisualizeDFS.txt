@@ -1,0 +1,2 @@
+Prompt given to AI:
+Visualize the DFS traversal of a 6-node directed graph with edges: 0→1(100), 0→2(50), 1→2(30), 1→3(80), 2→3(60), 2→4(40), 3→4(90), 3→5(70), 4→5(120). Show the network topology with bandwidth labels, highlight the DFS exploration order for minBW=50, and mark the final path found: 0→1→3→4→5. Show rejected edges (below threshold) and unvisited edges distinctly.
